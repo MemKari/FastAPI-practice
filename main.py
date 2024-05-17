@@ -1,19 +1,20 @@
 import uvicorn
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from models import User
+
 
 app = FastAPI()
 
+# создаём модель данных, которая обычно расположена в файле models.py
+# Внешние данные, имитирует входящий JSON
+external_data = {'id': '800',
+                 'signup': '2017-06-01 12:22',
+                 'name': 'lolita',
+                 'friends': [1, 2, 3]}
 
-@app.get("/")
-async def root():
-    return FileResponse("index.html")
-
-
-@app.post('/calculate')  # an example of post request: http://127.0.0.1/calculate?num1=5&num2=10
-def calculate(num1: int, num2: int):
-    return {"result": num1 + num2}
-
+# имитируем распаковку входящих данных в коде приложения
+user = User(**external_data)
+print(user)
 
 if __name__ == '__main__':
     uvicorn.run(app,
