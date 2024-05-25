@@ -1,10 +1,13 @@
 fake_users = [
-    {'id': 100, 'name': 'Bob', 'role': 'admin', 'degree': 'newbie'},
-    {'id': 101, 'name': 'Mark', 'role': 'trader', 'degree': 'newbie'},
-    {'id': 102, 'name': 'Lola', 'role': 'trader', 'degree': 'newbie'},
-    {'id': 103, 'name': 'Robert', 'role': 'trader', 'degree': 'newbie'},
+    {'id': 100, 'name': 'Bob', 'role': 'admin', 'degree': 'newbie', 'email': '', },
+    {'id': 101, 'name': 'Mark', 'role': 'trader', 'degree': 'newbie', 'email': '', },
+    {'id': 102, 'name': 'Lola', 'role': 'trader', 'degree': 'newbie', 'email': '', },
+    {'id': 103, 'name': 'Robert', 'role': 'trader', 'degree':
+        {'id': 2, 'created_at': '2024-05-22T21:09:33.072Z', 'type_degree': 'expert'},
+     'email': 'alice@example.com', },
     {'id': 104, 'name': 'Ola', 'role': 'trader', 'degree':
-        {'id': 1, 'created_at': '2024-05-22T21:09:33.072Z', 'type_degree': 'expert'}
+        {'id': 1, 'created_at': '2024-05-22T21:09:33.072Z', 'type_degree': 'expert'},
+     'email': '100500wrong@@example.com',
      },
 ]
 

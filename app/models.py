@@ -1,7 +1,7 @@
 from datetime import datetime
 from enum import Enum
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 
 
 #  модель данных обычно расположена в файле models.py
@@ -22,6 +22,7 @@ class User(BaseModel):
     name: str = Field(max_length=55)
     role: str = Field(max_length=10)
     degree: Degree
+    email: EmailStr
 
 
 class Trade(BaseModel):
