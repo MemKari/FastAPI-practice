@@ -1,7 +1,9 @@
+# скоро будет удален в связи с появлением нормальной БД
+
 fake_users = [
     {'id': 100, 'name': 'Bob', 'role': 'admin', 'degree': 'newbie', 'email': '', },
     {'id': 101, 'name': 'Mark', 'role': 'trader', 'degree': 'newbie', 'email': '', },
-    {'id': 102, 'name': 'Lola', 'role': 'trader', 'degree': 'newbie', 'email': '', },
+    {'id': 102, 'name': 'Lola', 'role': 'trader', 'degree': '', 'email': '', },
     {'id': 103, 'name': 'Robert', 'role': 'trader', 'degree':
         {'id': 2, 'created_at': '2024-05-22T21:09:33.072Z', 'type_degree': 'expert'},
      'email': 'alice@example.com', },

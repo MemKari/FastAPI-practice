@@ -1,6 +1,8 @@
 from typing import List, Annotated
+
 from pydantic import EmailStr
 from fastapi import APIRouter, File, UploadFile, Path, Query
+
 from models import User, Trade, Degree
 from databases import fake_users, fake_trades
 
@@ -44,3 +46,4 @@ async def add_file(
 async def add_file_with_metadate(
         upload_file: UploadFile):  # UploadFile загружает метаинформацию вместе с самим содержимым
     return {'File was processed. File name:': upload_file.filename}
+
