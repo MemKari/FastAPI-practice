@@ -5,7 +5,7 @@ from pydantic import EmailStr
 from sqlalchemy import String, create_engine, ForeignKey, DateTime, Float
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
-from config import *
+
 
 
 '''Переменная metadata действительно не нужна в вашем коде, так как вы используете декларативный стиль 
@@ -20,7 +20,7 @@ class User(Base):
     __tablename__ = 'Users'
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(String(30))
+    name: Mapped[str] = mapped_column(String(30), nullable=False)
     role: Mapped[str] = mapped_column(String(30))
     degree: Mapped[Optional[str]] = mapped_column(String(60), nullable=True)
     email: Mapped[EmailStr] = mapped_column(String(50), unique=True, nullable=False)
@@ -52,8 +52,6 @@ class Trade(Base):
         return f"Trade(trade_id={self.trade_id!r}, user_id={self.user_id!r}, currency={self.currency!r}, side={self.side!r}, price={self.price!r}, amount={self.amount!r})"
 
 
-# Создание подключения к базе данных
-engine = create_engine(f"postgresql+psycopg2://{username}:{username_pass}@{database_host}/{datadase_name}")
 
 # Создание таблиц в базе данных
-Base.metadata.create_all(engine)
+metadata = Base.metadata
