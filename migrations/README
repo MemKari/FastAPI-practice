@@ -1,0 +1,6 @@
+Generic single-database configuration.
+
+# для начала работы с алембик (нужен для миграций) в терминале выполнить  alembic init migrations. после этого
+# создаться директория migrations и конфигурационный файл alimbic.ini
+# больше про разные конфигурационные файлы:
+# https://proglib.io/p/konfiguracionnye-fayly-kak-instrument-upravleniya-prilozheniyami-na-python-2021-06-11#comments
