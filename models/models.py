@@ -2,15 +2,13 @@ import datetime
 from typing import Optional
 
 from pydantic import EmailStr
-from sqlalchemy import String, create_engine, ForeignKey, DateTime, Float
+from sqlalchemy import String, ForeignKey, DateTime, Float
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-
-
-
 
 '''Переменная metadata действительно не нужна в вашем коде, так как вы используете декларативный стиль 
 определения моделей с помощью SQLAlchemy ORM, который сам управляет метаданными. Убедитесь, 
 что вы вызываете Base.metadata.create_all(engine) вместо metadata.create_all(engine) для создания таблиц.'''
+
 
 class Base(DeclarativeBase):
     ...
@@ -52,6 +50,5 @@ class Trade(Base):
         return f"Trade(trade_id={self.trade_id!r}, user_id={self.user_id!r}, currency={self.currency!r}, side={self.side!r}, price={self.price!r}, amount={self.amount!r})"
 
 
-
-# Создание таблиц в базе данных
+# Создание таблиц в базе данных.
 metadata = Base.metadata

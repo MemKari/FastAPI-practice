@@ -3,7 +3,7 @@ from typing import List, Annotated
 from pydantic import EmailStr
 from fastapi import APIRouter, File, UploadFile, Path, Query
 
-from models import User, Trade, Degree
+from models.models import User, Trade
 from databases import fake_users, fake_trades
 
 router = APIRouter()
