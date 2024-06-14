@@ -8,4 +8,13 @@ Generic single-database configuration.
 
  2
  cоздать миграцию\ревизию
- alembic revision --autogenerate -m "Database creation2"
+ alembic revision --autogenerate -m "your_comment"
+
+3
+запустить миграцию\ревизию в терминале
+upgrade - название функции, далее указываем хэш до какой ревизии обновляемся
+alembic upgrade 4d5b8377146a
+
+--
+Есть после запуска миграции появились какие-то ошибки, миграция не произошла, даже если запускались несколько.
+

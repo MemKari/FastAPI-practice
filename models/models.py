@@ -14,8 +14,15 @@ class Base(DeclarativeBase):
     ...
 
 
+class Role(Base):
+    __tablename__ = 'Role'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(nullable=False)
+
+
 class User(Base):
-    __tablename__ = 'Users'
+    __tablename__ = 'User'
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(30), nullable=False)
@@ -23,31 +30,25 @@ class User(Base):
     degree: Mapped[Optional[str]] = mapped_column(String(60), nullable=True)
     email: Mapped[EmailStr] = mapped_column(String(50), unique=True, nullable=False)
     registered_at: Mapped[DateTime] = mapped_column(DateTime, default=datetime.date)
-    role_id: Mapped[int] = mapped_column(ForeignKey('Roles.id'))
+    role_id: Mapped[int] = mapped_column(ForeignKey(Role.id))
 
     def __repr__(self) -> str:
         return f"User(id={self.id!r}, name={self.name!r}, role={self.role!r})"
 
 
-class Role(Base):
-    __tablename__ = 'Roles'
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(nullable=False)
-
-
 class Trade(Base):
-    __tablename__ = 'Trades'
+    __tablename__ = 'Trade'
 
     trade_id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey('Users.id'))
+    user_id: Mapped[int] = mapped_column(ForeignKey(User.id))
     currency: Mapped[str] = mapped_column(String(15))
     side: Mapped[str] = mapped_column(String(15))
     price: Mapped[float] = mapped_column(Float)
     amount: Mapped[float] = mapped_column(Float)
 
     def __repr__(self) -> str:
-        return f"Trade(trade_id={self.trade_id!r}, user_id={self.user_id!r}, currency={self.currency!r}, side={self.side!r}, price={self.price!r}, amount={self.amount!r})"
+        return (f"Trade(trade_id={self.trade_id!r}, user_id={self.user_id!r}, currency={self.currency!r}, "
+                f"side={self.side!r}, price={self.price!r}, amount={self.amount!r})")
 
 
 # Создание таблиц в базе данных.

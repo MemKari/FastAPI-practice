@@ -1,10 +1,10 @@
 from typing import List, Annotated
 
-from pydantic import EmailStr
 from fastapi import APIRouter, File, UploadFile, Path, Query
+from pydantic import EmailStr
 
-from models.models import User, Trade
 from databases import fake_users, fake_trades
+from models.models import User, Trade
 
 router = APIRouter()
 
@@ -24,7 +24,7 @@ async def get_all_users(limit: Annotated[int, Query(title='Count of users you wi
 
 
 @router.post('/new_account', response_model=User)
-async def create_new_user(degree: Degree, id: int, name: str, email: EmailStr, role: str = 'trader', ):
+async def create_new_user(degree: str, id: int, name: str, email: EmailStr, role: str = 'trader', ):
     new_user = User(id=id, name=name, role=role, degree=degree, email=email)
     fake_users.extend(new_user)
     return new_user
