@@ -32,6 +32,9 @@ class User(Base):
     email: Mapped[EmailStr] = mapped_column(String(50), unique=True, nullable=False)
     registered_at: Mapped[DateTime] = mapped_column(DateTime, default=datetime.date)
     role_id: Mapped[int] = mapped_column(ForeignKey(Role.id))
+    is_active: Mapped[bool] = mapped_column(String(100))
+    is_superuser: Mapped[bool] = mapped_column(String(100))
+    is_verified: Mapped[bool] = mapped_column(String(100))
 
     def __repr__(self) -> str:
         return f"User(id={self.id!r}, name={self.name!r}, role={self.role!r})"
