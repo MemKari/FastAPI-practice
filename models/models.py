@@ -26,6 +26,7 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(30), nullable=False)
+    hashed_password: Mapped[str] = mapped_column(String(100), nullable=False)
     role: Mapped[str] = mapped_column(String(30))
     degree: Mapped[Optional[str]] = mapped_column(String(60), nullable=True)
     email: Mapped[EmailStr] = mapped_column(String(50), unique=True, nullable=False)

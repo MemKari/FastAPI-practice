@@ -24,8 +24,8 @@ async def get_all_users(limit: Annotated[int, Query(title='Count of users you wi
 
 
 @router.post('/new_account', response_model=User)
-async def create_new_user(degree: str, id: int, name: str, email: EmailStr, role: str = 'trader', ):
-    new_user = User(id=id, name=name, role=role, degree=degree, email=email)
+async def create_new_user(degree: str, id: int, name: str, hashed_password: str, email: EmailStr, role: str = 'trader',):
+    new_user = User(id=id, name=name, hashed_password=hashed_password, role=role, degree=degree, email=email)
     fake_users.extend(new_user)
     return new_user
 
