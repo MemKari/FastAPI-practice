@@ -10,10 +10,11 @@ DB_PASS = os.environ.get('DB_PASS')
 DB_PORT = os.environ.get('DB_PORT')
 DB_NAME = os.environ.get('DB_NAME')
 
+
 settings = [DB_HOST, DB_USER, DB_PASS, DB_PORT, DB_NAME]
 
 if not all([settings]):
     raise ValueError("One or more environment variables are not set")
 
-for each in settings:
-    print(f'{each}:{type(each)}')
+
+SECRET = os.environ.get('SECRET')
